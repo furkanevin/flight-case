@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   FaPlane,
   FaPlaneArrival,
@@ -5,7 +6,8 @@ import {
   FaRegCalendarAlt,
 } from 'react-icons/fa';
 
-const Filter = () => {
+const Filter = ({destTo,destFrom,setFlights}) => {
+
   return (
     <div className="box flex flex-col gap-5 ">
       <div className="flex justify-between items-center">
@@ -29,24 +31,42 @@ const Filter = () => {
           <div className="flex flex-1 gap-2">
             <div className="flex flex-1 gap-1 items-center border rounded-3xl rounded-r-none shadow p-2 border-gray-300">
               <FaPlaneDeparture className="text-purple-800" />
-              <input type="text" className="outline-none w-full" />
+              <select type="text" className="outline-none w-full">
+              {
+                
+                destFrom?.map((item,key)=>{
+
+                  console.log(item)
+                  return <option value={item}>{item}</option>
+
+                })
+              }
+              </select>
             </div>
 
             <div className="flex flex-1 gap-1 items-center border rounded-3xl rounded-l-none shadow p-2 border-gray-300">
               <FaPlaneArrival className="text-purple-800" />
-              <input type="text" className="outline-none w-full" />
+              <select type="text" className="outline-none w-full">
+              {
+                
+                destTo?.map((item,key)=>{
+                  return <option value={item}>{item}</option>
+
+                })
+              }
+              </select>
             </div>
           </div>
 
           <div className="flex flex-1 gap-2">
             <div className="flex flex-1 gap-1 items-center border rounded-3xl rounded-r-none shadow p-2 border-gray-300">
               <FaRegCalendarAlt className="text-purple-800" />
-              <input type="text" className="outline-none w-full" />
+              <input type="date" className="outline-none w-full" />
             </div>
 
             <div className="flex flex-1 gap-1 items-center border rounded-3xl rounded-l-none shadow p-2 border-gray-300">
               <FaRegCalendarAlt className="text-purple-800" />
-              <input type="text" className="outline-none w-full" />
+              <input type="date" className="outline-none w-full" />
             </div>
           </div>
         </div>

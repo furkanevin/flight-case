@@ -10,6 +10,8 @@ const List = () => {
     queryFn: getFlights,
   });
 
+  // console.log(data?.flights)
+
   return (
     <div>
       {isLoading ? (
@@ -18,7 +20,7 @@ const List = () => {
         <Error info={error.message} refetch={refetch} />
       ) : (
         <div className="flex flex-col gap-12">
-          {data.slice(0, 3).map((flight) => (
+          {data.flights.slice(0, 3).map((flight) => (
             <Card flight={flight} key={flight.id} />
           ))}
         </div>
